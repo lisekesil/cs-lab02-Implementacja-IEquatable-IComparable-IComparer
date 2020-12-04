@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace wellFormatedType
 {
@@ -23,20 +24,25 @@ namespace wellFormatedType
                 Console.WriteLine(item);
             }
             Console.WriteLine();
+           /*
             pracownicy.Sort(new WgCzasuZatrudnieniaPotemWynagrodzeniaComparer());
             foreach(var item in pracownicy)
             {
                 Console.WriteLine(item);
             }
 
-            pracownicy.Sort((p1, p2) => (p1.Wynagrodzenie != p2.Wynagrodzenie) ?
+            * pracownicy.Sort((p1, p2) => (p1.Wynagrodzenie != p2.Wynagrodzenie) ?
                             (-1) * (p1.Wynagrodzenie.CompareTo(p2.Wynagrodzenie)) :
                             p1.CzasZatrudnienia.CompareTo(p2.CzasZatrudnienia)
             );
             foreach (var pracownik in pracownicy)
-                System.Console.WriteLine(pracownik);
+                Console.WriteLine(pracownik); */
+            Console.WriteLine();
+
+            var pracownicy2 = pracownicy.OrderBy(pracownik => pracownik.Wynagrodzenie).ThenBy(pracownik => pracownik.Nazwisko);
+            foreach (var pracownik in pracownicy2)
+                Console.WriteLine(pracownik);
         }
 
- 
     }
 }
