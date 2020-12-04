@@ -22,7 +22,19 @@ namespace wellFormatedType
             {
                 Console.WriteLine(item);
             }
-            
+            Console.WriteLine();
+            pracownicy.Sort(new WgCzasuZatrudnieniaPotemWynagrodzeniaComparer());
+            foreach(var item in pracownicy)
+            {
+                Console.WriteLine(item);
+            }
+
+            pracownicy.Sort((p1, p2) => (p1.Wynagrodzenie != p2.Wynagrodzenie) ?
+                            (-1) * (p1.Wynagrodzenie.CompareTo(p2.Wynagrodzenie)) :
+                            p1.CzasZatrudnienia.CompareTo(p2.CzasZatrudnienia)
+            );
+            foreach (var pracownik in pracownicy)
+                System.Console.WriteLine(pracownik);
         }
 
  
